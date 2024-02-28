@@ -20,9 +20,4 @@ EXPOSE 9864 9866 8042
 ADD start.sh /start.sh
 RUN chmod a+x /start.sh
 
-# Datanode에 spark 설치는 필요없지만 yarn container에서 spark app을 실행할때, spark job을 제출한 서버의 spark 설정을 따르게 된다.
-# spark설정에서 eventlog 디렉토리를 설정해준 부분이 있는데, 이로 인해 datanode의 yarn container에서 실행되는 spark app 로그는 해당 서버에 남게 된다.
-# dummy로 디렉토리를 만들어줘야 함
-RUN mkdir -p /opt/spark/eventLog
-
 CMD ["/start.sh"]
