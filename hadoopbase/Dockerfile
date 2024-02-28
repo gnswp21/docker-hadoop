@@ -1,6 +1,6 @@
 FROM language-base
 
-ENV HADOOP_VERSION=3.2.4
+ENV HADOOP_VERSION=3.3.6
 ENV HADOOP_FILE_NAME=hadoop-$HADOOP_VERSION
 ENV HADOOP_URL=https://dlcdn.apache.org/hadoop/common/hadoop-$HADOOP_VERSION/$HADOOP_FILE_NAME.tar.gz
 

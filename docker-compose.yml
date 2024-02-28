@@ -11,15 +11,14 @@ services:
     container_name: namenode
     hostname: namenode
     ports:
-      - "9098:9870" # namenode web UI
+      - "9870:9870" # namenode web UI
     volumes:
       - namenode:/opt/hadoop/dfs/name # namenode data mount
-      - namenode:/opt/spark/eventLog # spark history log data mount 
-      - namenode:/opt/hadoop/yarn/timeline # yarn timeline data mount
+      - C:/Users/family/p:/pd
+
     networks:
       - bridge
-#      hs_bridge:
-#        ipv4_address: 192.0.0.5
+
 
   datanode01:
     <<: *datanode_base
@@ -28,10 +27,7 @@ services:
     volumes:
       - datanode01:/opt/hadoop/dfs/data
       - datanode01:/opt/hadoop/yarn/data
-      - namenode:/opt/spark/eventLog
-#    networks:
-#      hs_bridge:
-#        ipv4_address: 192.0.0.2 
+
   datanode02:
     <<: *datanode_base
     container_name: datanode02
@@ -39,10 +35,7 @@ services:
     volumes:
       - datanode02:/opt/hadoop/dfs/data
       - datanode02:/opt/hadoop/yarn/data
-      - namenode:/opt/spark/eventLog
-#    networks:
-#      hs_bridge:
-#        ipv4_address: 192.0.0.3
+
   datanode03:
     <<: *datanode_base
     container_name: datanode03
@@ -50,10 +43,6 @@ services:
     volumes:
       - datanode03:/opt/hadoop/dfs/data
       - datanode03:/opt/hadoop/yarn/data
-      - namenode:/opt/spark/eventLog
-#    networks:
-#      hs_bridge:
-#        ipv4_address: 192.0.0.4
 
   resourcemanager:
     image: resourcemanager
@@ -63,50 +52,7 @@ services:
       - "9099:8088"
     networks:
       - bridge
-#   volumes:
-#     - namenode:/opt/hadoop/yarn/data
-#      hs_bridge:
-#        ipv4_address: 192.0.0.10
 
-  yarntimelineserver:
-    image: yarn-timelineserver
-    container_name: yarntimelineserver
-    hostname: yarntimelineserver
-    ports:
-      - "9096:8188"
-    networks:
-      - bridge
-    volumes:
-      - namenode:/opt/hadoop/yarn/timeline
-#      hs_bridge:
-#        ipv4_address: 192.0.0.12
-  
-  sparkhistoryserver:
-    image: spark-historyserver
-    container_name: sparkhistoryserver
-    hostname: sparkhistoryserver
-    ports:
-      - "9093:18080"
-    depends_on:
-      - namenode
-      - resourcemanager
-    volumes:
-      - namenode:/opt/spark/eventLog
-    networks:
-      - bridge
-
-  zeppelin:
-    image: zeppelin
-    container_name: zeppelin
-    hostname: zeppelin
-    ports:
-      - "9097:8080"
-    networks:
-      - bridge
-    volumes:
-      - namenode:/opt/spark/eventLog
-      - /env/hadoop-eco/hadoop/zeppelin/notebook:/zeppelin-0.10.1-bin-all/notebook
-      - /home/ec2-user/testdata:/testdata
 
 volumes:
   namenode:
@@ -117,10 +63,4 @@ volumes:
 networks:
   bridge:
 
-#networks:
-#  hs_bridge:
-#    driver: bridge
-#    ipam:
-#      driver: default
-#      config:
-#        - subnet: 192.0.0.0/16
+
