@@ -14,4 +14,5 @@ else
 fi
 
 # NameNode 기동
-$HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode
+#$HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode
+service ssh start && tail -f /dev/null

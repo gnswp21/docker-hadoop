@@ -17,4 +17,9 @@ RUN chmod a+x /start.sh
 # 9870 : NameNode HTTP web ui
 EXPOSE 9000 9870
 
+# 8088 : yarn resource manager Web UI
+# 8030 : yarn scheduler interface
+# 8032 : yarn resource manager IPC port
+EXPOSE 8088 8032 8030
+
 CMD ["/start.sh", "/opt/hadoop/dfs/name"]
