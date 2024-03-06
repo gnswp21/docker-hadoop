@@ -12,10 +12,9 @@ services:
     hostname: namenode
     ports:
       - "9870:9870" # namenode web UI
+      - "8088:8088" # resource manager
     volumes:
       - namenode:/opt/hadoop/dfs/name # namenode data mount
-      - C:/Users/family/p:/pd
-
     networks:
       - bridge
 
