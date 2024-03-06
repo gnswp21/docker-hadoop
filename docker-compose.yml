@@ -43,16 +43,6 @@ services:
       - datanode03:/opt/hadoop/dfs/data
       - datanode03:/opt/hadoop/yarn/data
 
-#  resourcemanager:
-#    image: resourcemanager
-#    container_name: resourcemanager
-#    hostname: resourcemanagerh
-#    ports:
-#      - "8088:8088"
-#    networks:
-#      - bridge
-
-
 volumes:
   namenode:
   datanode01:
