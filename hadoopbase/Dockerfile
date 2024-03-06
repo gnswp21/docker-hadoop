@@ -24,9 +24,16 @@ RUN mkdir -p $HADOOP_HOME/yarn/timeline
 ADD core-site.xml $HADOOP_CONF_DIR
 ADD yarn-site.xml $HADOOP_CONF_DIR
 ADD mapred-site.xml $HADOOP_CONF_DIR
+
 ADD hadoop-env.sh $HADOOP_CONF_DIR
+
 ADD yarn-env.sh $HADOOP_CONF_DIR
 ADD workers $HADOOP_CONF_DIR
+
+# window to linux. CRLF -> LF
+RUN sed -i 's/\r$//' $HADOOP_CONF_DIR/hadoop-env.sh
+RUN sed -i 's/\r$//' $HADOOP_CONF_DIR/yarn-env.sh
+RUN sed -i 's/\r$//' $HADOOP_CONF_DIR/workers
 
 
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
