@@ -22,11 +22,3 @@ ENV CLASS_PATH=.:$JAVA_HOME/lib/tools.jar
 ENV PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
 
 
-
-## python install
-#RUN wget $PYTHON_URL
-#RUN tar -xvzf Python-$PYTHON_VERSION.tgz && rm Python-$PYTHON_VERSION.tgz
-#RUN /Python-$PYTHON_VERSION/configure --enable-optimizations
-#RUN make altinstall
-#RUN ln -s /usr/local/bin/python3.7 /usr/bin/python3
-#RUN ln -s /usr/local/bin/python3.7 /usr/bin/python

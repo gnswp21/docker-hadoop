@@ -14,8 +14,7 @@ RUN mkdir -p $HADOOP_HOME/yarn/data
 # 9864 : datanode web UT port
 # 9866 : The datanode server address and port for data transfer.
 # 8042 : yarn nodemanager webapp address
-# 8040 : arn.nodemanager.localizer.address
-EXPOSE 9864 9866 8042 
+EXPOSE 9864 9866 8042
 
 ADD start.sh /start.sh
 RUN chmod a+x /start.sh
